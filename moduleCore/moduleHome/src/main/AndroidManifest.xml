@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.lins.modulehome">
+
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+
+    <application>
+        <activity android:name=".test.bitmapEdit.BitmapEditActivity"></activity>
+
+        <service
+            android:name=".test.service.MyService"
+            android:enabled="true"
+            android:exported="true" />
+
+        <activity
+            android:name=".test.MaterialDesignActivity"
+            android:theme="@style/MaterialDesignTheme" />
+        <activity android:name=".test.service.ServiceActivity" />
+        <activity android:name=".test.HttpActivity" />
+        <activity android:name=".test.PlayVideoActivity" />
+        <activity android:name=".test.PlayMusicActivity" />
+        <activity android:name=".test.TakePhotoActivity" />
+        <activity android:name=".test.NotificationActivity" />
+        <activity android:name=".test.ContactActivity" />
+    </application>
+
+</manifest>

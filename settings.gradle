@@ -1,0 +1,8 @@
+include ':moduleCore:moduleProduct'
+include ':moduleCore:moduleUser'
+include ':moduleCore:moduleCart'
+include ':moduleCore:moduleShop'
+include ':moduleCore:moduleHome'
+include ':moduleSystem'
+include ':app'
+rootProject.name = "MyLibrary"

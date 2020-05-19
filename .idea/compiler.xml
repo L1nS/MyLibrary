@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <bytecodeTargetLevel>
+      <module name="MyLibrary.app" target="1.8" />
+      <module name="MyLibrary.moduleCore.moduleCart" target="1.8" />
+      <module name="MyLibrary.moduleCore.moduleHome" target="1.8" />
+      <module name="MyLibrary.moduleCore.moduleProduct" target="1.8" />
+      <module name="MyLibrary.moduleCore.moduleShop" target="1.8" />
+      <module name="MyLibrary.moduleCore.moduleUser" target="1.8" />
+      <module name="MyLibrary.moduleHome" target="1.7" />
+      <module name="MyLibrary.moduleSystem" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

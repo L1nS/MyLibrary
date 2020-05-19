@@ -1,0 +1,17 @@
+ext {
+    android = [
+            compileSdkVersion: 29,
+            buildToolsVersion: "27.0.2",
+            minSdkVersion    : 19,
+            targetSdkVersion : 29,
+            JavaVersion      : JavaVersion.VERSION_1_8
+    ]
+    dependencies = [
+            project                  : [
+                    moduleBase     : ':moduleSystem:moduleBase',
+                    moduleCommon   : ':modulePublic:moduleCommon',
+                    moduleUser     : ':moduleCore:moduleUser'
+            ],
+            "junit:4.12"             : 'junit:junit:4.12'
+    ]
+}
