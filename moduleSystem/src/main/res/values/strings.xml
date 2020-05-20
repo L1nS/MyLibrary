@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources><string name="widget_x_listview_header_hint_normal">下拉刷新...</string>
+    <string name="widget_x_listview_header_hint_release">释放刷新...</string>
+    <string name="widget_x_refreshing">正在刷新...</string>
+    <string name="widget_x_refresh_done">刷新完成...</string>
+    <string name="widget_x_listview_loading">努力加载中...</string>
+    <string name="widget_x_nomore_loading">没有更多内容了</string>
+</resources>
