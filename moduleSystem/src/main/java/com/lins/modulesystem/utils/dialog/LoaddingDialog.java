@@ -8,6 +8,7 @@ import com.lins.modulesystem.R;
 
 
 /**
+ *
  */
 public class LoaddingDialog {
     protected static final String TAG = "ProgressDialog";
@@ -50,7 +51,7 @@ public class LoaddingDialog {
                     dialog.show();
                 }
             } else {
-                dialog = new Dialog(context,R.style.LoadingDialog);
+                dialog = new Dialog(context, R.style.LoadingDialog);
                 dialog.setCancelable(false);// 不可以用“返回键”取消
                 dialog.setContentView(R.layout.dialog_loading);// 设置布局
                 if (context != null) {
@@ -69,6 +70,7 @@ public class LoaddingDialog {
         try {
             if (dialog != null && dialog.isShowing()) {
                 dialog.dismiss();
+                dialog = null;
             }
             isShow = false;
         } catch (Exception e) {
