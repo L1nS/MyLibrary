@@ -1,4 +1,4 @@
-package com.lins.modulesystem.utils.screenUtil;
+package com.lins.modulesystem.utils.screen;
 
 import android.app.Activity;
 import android.content.Context;
@@ -95,17 +95,14 @@ public class ScreenParameterUtil {
 
     /**
      * 获取导航栏高度
-     *
-     * @param context
      * @return
      */
-    public static int getDaoHangHeight(Context context) {
-        int result = 0;
+    public static int getDaoHangHeight() {
         int resourceId = 0;
-        int rid = context.getResources().getIdentifier("config_showNavigationBar", "bool", "android");
+        int rid = BaseApp.getInstance().getResources().getIdentifier("config_showNavigationBar", "bool", "android");
         if (rid != 0) {
-            resourceId = context.getResources().getIdentifier("navigation_bar_height", "dimen", "android");
-            return context.getResources().getDimensionPixelSize(resourceId);
+            resourceId = BaseApp.getInstance().getResources().getIdentifier("navigation_bar_height", "dimen", "android");
+            return BaseApp.getInstance().getResources().getDimensionPixelSize(resourceId);
         } else
             return 0;
     }

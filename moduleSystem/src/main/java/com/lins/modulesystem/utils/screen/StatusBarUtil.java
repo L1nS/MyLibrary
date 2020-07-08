@@ -1,4 +1,4 @@
-package com.lins.modulesystem.utils.screenUtil;
+package com.lins.modulesystem.utils.screen;
 
 import android.app.Activity;
 import android.graphics.Color;
@@ -84,6 +84,28 @@ public class StatusBarUtil {
             lp.width = FrameLayout.LayoutParams.MATCH_PARENT;
             lp.height = ScreenParameterUtil.getStatusBarHeight2(activity) + ScreenParameterUtil.topx(activity, 48);
             view.setLayoutParams(lp);
+        }
+    }
+
+    /**
+     * 修改状态栏颜色，支持5.0以上版本
+     *
+     * @param activity
+     * @param colorId
+     */
+    public static void setStatusBarColor(Activity activity, int colorId, boolean becomeLight) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Window window = activity.getWindow();
+            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.setStatusBarColor(activity.getResources().getColor(colorId));
+            if (becomeLight) {
+                //实现状态栏图标和文字颜色为浅色
+                activity.getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
+            } else {
+                //实现状态栏图标和文字颜色为暗色
+                activity.getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+            }
         }
     }
 }

@@ -12,14 +12,17 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.lins.modulesystem.R;
 
-
 public class ScaleImageView extends RelativeLayout {
 
     private ImageView mImageView;
     private CardView idCardView;
     private ConstraintLayout idConstraintLayout;
+    //设定宽高比例
     private float dimensionRatioWidth;
     private float dimensionRatioHeight;
+    private final float default_dimension_ratio = 1.0f;
+    //CardView的角度
+    private float cardCornerRadius;
 
     public ScaleImageView(Context context) {
         super(context);
@@ -34,8 +37,9 @@ public class ScaleImageView extends RelativeLayout {
         //加载自定义的属性
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.ScaleImageView);
 
-        dimensionRatioWidth = a.getFloat(R.styleable.ScaleImageView_dimensionRatioWidth, 1.0f);
-        dimensionRatioHeight = a.getFloat(R.styleable.ScaleImageView_dimensionRatioHeight, 1.0f);
+        dimensionRatioWidth = a.getFloat(R.styleable.ScaleImageView_dimensionRatioWidth, default_dimension_ratio);
+        dimensionRatioHeight = a.getFloat(R.styleable.ScaleImageView_dimensionRatioHeight, default_dimension_ratio);
+        cardCornerRadius = a.getDimension(R.styleable.ScaleImageView_cardCornerRadius, 0f);
         //回收资源，这一句必须调用
         a.recycle();
     }
@@ -46,13 +50,18 @@ public class ScaleImageView extends RelativeLayout {
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
-        mImageView = (ImageView) findViewById(R.id.id_img);
-        idCardView = findViewById(R.id.id_cardView);
+        mImageView = (ImageView) findViewById(R.id.widget_scaleimageview_img);
+        idCardView = findViewById(R.id.widget_scaleimageview_cardView);
         idConstraintLayout = findViewById(R.id.id_constraint_layout);
-        setImageViewLayoutParams();
+        if (dimensionRatioHeight != default_dimension_ratio || dimensionRatioWidth != default_dimension_ratio)
+            setImageViewLayoutParams();
+        idCardView.setRadius(cardCornerRadius);
     }
 
-    public void setImageViewLayoutParams() {
+    /**
+     * 初始化宽高比例
+     */
+    private void setImageViewLayoutParams() {
         ConstraintLayout.LayoutParams imageViewParams =
                 new ConstraintLayout.LayoutParams(0, 0);
         imageViewParams.dimensionRatio = "h," + dimensionRatioWidth + ":" + dimensionRatioHeight;
@@ -60,6 +69,22 @@ public class ScaleImageView extends RelativeLayout {
         imageViewParams.rightToRight = R.id.id_constraint_layout;
         imageViewParams.topToTop = R.id.id_constraint_layout;
         idCardView.setLayoutParams(imageViewParams);
+    }
+
+    /**
+     * 自定义宽高比例
+     *
+     * @param ratioWidth
+     * @param ratioHeight
+     */
+    public void initDimensionRatio(float ratioWidth, float ratioHeight) {
+        dimensionRatioHeight = ratioHeight;
+        dimensionRatioWidth = ratioWidth;
+        setImageViewLayoutParams();
+    }
+
+    public void initDimensionRatio(float ratioHeight) {
+        initDimensionRatio(1, ratioHeight);
     }
 
     public ImageView getImageView() {

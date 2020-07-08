@@ -16,6 +16,7 @@
 package com.lins.modulesystem.http.callback;
 
 import com.google.gson.stream.JsonReader;
+import com.lins.modulesystem.http.exception.TokenException;
 import com.lins.modulesystem.http.response.HttpResponse;
 import com.lins.modulesystem.http.response.SimpleResponse;
 import com.lzy.okgo.convert.Converter;
@@ -152,9 +153,11 @@ public class JsonConvert<T> implements Converter<T> {
                 if (status == 200) {
                     //noinspection unchecked
                     return (T) httpResponse;
-//                } else if (status == 104) {
+                } else if (status == -1) {
+                    throw new TokenException(httpResponse.msg);
 //                    throw new IllegalStateException("用户授权信息无效");
-//                } else if (status == Constants.OUT_TIME) {
+//                }
+//                else if (status == Constants.OUT_TIME) {
 //                    throw new IllegalStateException(httpResponse.msg);
                 } else {
                     //直接将服务端的错误信息抛出，onError中可以获取

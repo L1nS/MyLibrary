@@ -1,4 +1,4 @@
-package com.lins.modulesystem.utils.screenUtil;
+package com.lins.modulesystem.utils.screen;
 
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;

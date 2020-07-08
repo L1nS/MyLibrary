@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--toolbar高度-->
+    <dimen name="toolbar_height">@dimen/qb_px_100</dimen>
+<!--    <dimen name="toolbar_height">?attr/actionBarSize</dimen>-->
+    <!--左右间距-->
+    <dimen name="space_margin_lr">@dimen/qb_px_30</dimen>
+
+</resources>

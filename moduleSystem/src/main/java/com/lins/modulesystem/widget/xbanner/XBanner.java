@@ -18,6 +18,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+
 import androidx.annotation.Dimension;
 import androidx.annotation.DrawableRes;
 import androidx.annotation.IntDef;
@@ -25,7 +26,6 @@ import androidx.annotation.LayoutRes;
 import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
-
 
 import com.lins.modulesystem.R;
 import com.lins.modulesystem.widget.xbanner.entity.SimpleBannerInfo;
@@ -430,7 +430,7 @@ public class XBanner extends RelativeLayout implements XBannerViewPager.AutoPlay
             pointLp.addRule(RelativeLayout.LEFT_OF, R.id.xbanner_pointId);
         } else if (LEFT == mPointPosition) {
             mPointRealContainerLp.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
-            mTipTv.setGravity(Gravity.CENTER_VERTICAL | Gravity.RIGHT);
+//            mTipTv.setGravity(Gravity.CENTER_VERTICAL | Gravity.RIGHT);
             pointLp.addRule(RelativeLayout.RIGHT_OF, R.id.xbanner_pointId);
         } else if (RIGHT == mPointPosition) {
             mPointRealContainerLp.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
@@ -449,7 +449,7 @@ public class XBanner extends RelativeLayout implements XBannerViewPager.AutoPlay
             mPlaceholderImg = new ImageView(getContext());
             mPlaceholderImg.setScaleType(ImageView.ScaleType.FIT_XY);
             mPlaceholderImg.setImageResource(mPlaceholderDrawableResId);
-            LayoutParams layoutParams = new LayoutParams(RMP, RMP);
+            RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(RMP, RMP);
             addView(mPlaceholderImg, layoutParams);
         }
     }

@@ -1,11 +1,9 @@
 package com.lins.modulesystem.http;
 
 import android.app.Application;
+import android.text.TextUtils;
 
 import com.hjq.toast.ToastUtils;
-import com.lins.modulesystem.http.exception.TokenException;
-import com.lins.modulesystem.utils.MyDateUtils;
-import com.lins.modulesystem.utils.MyValidator;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.cache.CacheEntity;
 import com.lzy.okgo.cache.CacheMode;
@@ -17,6 +15,11 @@ import com.lzy.okgo.https.HttpsUtils;
 import com.lzy.okgo.interceptor.HttpLoggingInterceptor;
 import com.lzy.okgo.model.HttpHeaders;
 import com.lzy.okgo.model.HttpParams;
+import com.lins.modulesystem.http.exception.TokenException;
+import com.lins.modulesystem.manager.LoginManager;
+import com.lins.modulesystem.rx.RxBus;
+import com.lins.modulesystem.rx.RxBusTag;
+import com.lins.modulesystem.utils.MyDateUtils;
 
 import java.io.UnsupportedEncodingException;
 import java.net.ConnectException;
@@ -67,7 +70,7 @@ public class OkGoUtil {
                 .setOkHttpClient(builder.build())               //建议设置OkHttpClient，不设置会使用默认的
                 .setCacheMode(CacheMode.NO_CACHE)               //全局统一缓存模式，默认不使用缓存，可以不传
                 .setCacheTime(CacheEntity.CACHE_NEVER_EXPIRE)   //全局统一缓存时间，默认永不过期，可以不传
-                .setRetryCount(3);                      //全局统一超时重连次数，默认为三次，那么最差的情况会请求4次(一次原始请求，三次重连请求)，不需要可以设置为0
+                .setRetryCount(1);                      //全局统一超时重连次数，默认为三次，那么最差的情况会请求4次(一次原始请求，三次重连请求)，不需要可以设置为0
 //                .addCommonHeaders(getHttpHeaders());                   //全局公共头
 //                .addCommonParams(params);                       //全局公共参数
     }
@@ -153,20 +156,22 @@ public class OkGoUtil {
             errorMsg = "网络请求超时";
             System.out.println(errorMsg);
         } else if (exception instanceof HttpException) {
+            errorMsg = "服务器响应失败";
             System.out.println("服务器响应码404和500了");
         } else if (exception instanceof StorageException) {
             errorMsg = "sd卡不存在或者没有权限";
             System.out.println(errorMsg);
         } else if (exception instanceof TokenException) {//Token过期
+            LoginManager.getInstance().clearUserInfo();
+            RxBus.$().post(RxBusTag.RXBUS_GOTO_LOGIN);//跳转登录页面
             errorMsg = exception.getMessage();
-
         } else if (exception instanceof IllegalStateException) {
             //这个异常类型就是你自己抛的，当然你也可以抛其他类型，或者自定义类型，无所谓，只要是异常就行
             //这里获取的message就是你前面抛出来的数据，至于你想怎么解析都行
             errorMsg = exception.getMessage();
             System.out.println(errorMsg);
         }
-        if (!MyValidator.isEmpty(errorMsg))
+        if (!TextUtils.isEmpty(errorMsg))
             ToastUtils.show(errorMsg);
     }
 }

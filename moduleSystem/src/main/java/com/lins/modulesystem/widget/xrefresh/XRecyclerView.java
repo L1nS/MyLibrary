@@ -48,6 +48,7 @@ public class XRecyclerView extends RecyclerView {
     }
 
     private void init(Context context) {
+        //TODO 无法进行局部更新
         if (pullRefreshEnabled) {
             XRefreshHeader refreshHeader = new XRefreshHeader(context);
             mHeaderViews.put(0, refreshHeader);
@@ -273,7 +274,7 @@ public class XRecyclerView extends RecyclerView {
         }
     }
 
-    private final AdapterDataObserver mDataObserver = new AdapterDataObserver() {
+    private final RecyclerView.AdapterDataObserver mDataObserver = new RecyclerView.AdapterDataObserver() {
         @Override
         public void onChanged() {
             mWrapAdapter.notifyDataSetChanged();
@@ -303,6 +304,8 @@ public class XRecyclerView extends RecyclerView {
         public void onItemRangeMoved(int fromPosition, int toPosition, int itemCount) {
             mWrapAdapter.notifyItemMoved(fromPosition, toPosition);
         }
+
+
     };
 
 

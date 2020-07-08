@@ -3,9 +3,11 @@ package com.lins.modulesystem.rx;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 import androidx.annotation.NonNull;
+
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.functions.Consumer;
@@ -78,6 +80,16 @@ public class RxBus {
         }
     }
 
+    @SuppressWarnings("rawtypes")
+    public void unregisterAll() {
+        for (Map.Entry<Object, List<Subject>> entry : subjectMapper.entrySet()) {
+            List<Subject> subjects = entry.getValue();
+            if (null != subjects) {
+                subjectMapper.remove(entry.getKey());
+            }
+        }
+    }
+
     /**
      * 取消监听
      *
@@ -120,6 +132,10 @@ public class RxBus {
                 //LogUtil.d("onEvent", "eventName: " + tag);
             }
         }
+    }
+
+    public void post(int tag) {
+        post(tag, 1);
     }
 
     @SuppressWarnings("rawtypes")

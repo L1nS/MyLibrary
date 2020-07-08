@@ -3,22 +3,25 @@ package com.lins.modulesystem.utils.dialog;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.view.KeyEvent;
 
+import com.lzy.okgo.OkGo;
 import com.lins.modulesystem.R;
 
 
 /**
  *
  */
-public class LoaddingDialog {
+public class LoadingDialog {
     protected static final String TAG = "ProgressDialog";
-    private static LoaddingDialog mProgressDialog = null;
+    private static LoadingDialog mProgressDialog = null;
     private Dialog dialog;
     private boolean isShow = false; // loading框 是否正在showing
 
-    public static LoaddingDialog getInstance() {
+    public static LoadingDialog getInstance() {
         if (mProgressDialog == null) {
-            mProgressDialog = new LoaddingDialog();
+            mProgressDialog = new LoadingDialog();
         }
         return mProgressDialog;
     }
@@ -38,6 +41,10 @@ public class LoaddingDialog {
      * @return
      */
     public void createLoadingDialog(Context context) {
+        createLoadingDialog(context, false);
+    }
+
+    public void createLoadingDialog(Context context, boolean ableCancel) {
         if (dialog != null && !dialog.isShowing()) {
             isShow = false;
         }
@@ -46,29 +53,45 @@ public class LoaddingDialog {
             if (context instanceof Activity) {
                 if (!((Activity) context).isFinishing()) {
                     dialog = new Dialog(context, R.style.LoadingDialog);
-                    dialog.setCancelable(false);// 不可以用“返回键”取消
+                    dialog.setCanceledOnTouchOutside(false);
                     dialog.setContentView(R.layout.dialog_loading);// 设置布局
+                    if (!ableCancel) {
+                        dialog.setCancelable(false);// 不可以用“返回键”取消
+                    } else {
+                        dialog.setOnKeyListener(keyClickListener);
+                    }
                     dialog.show();
                 }
             } else {
                 dialog = new Dialog(context, R.style.LoadingDialog);
-                dialog.setCancelable(false);// 不可以用“返回键”取消
+                dialog.setCanceledOnTouchOutside(false);
                 dialog.setContentView(R.layout.dialog_loading);// 设置布局
-                if (context != null) {
-                    try {
-                        dialog.show();
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-
+                if (!ableCancel) {
+                    dialog.setCancelable(false);// 不可以用“返回键”取消
+                } else {
+                    dialog.setOnKeyListener(keyClickListener);
                 }
+                dialog.show();
             }
         }
     }
 
+    DetachKeyClickListener keyClickListener = DetachKeyClickListener.wrap(new DialogInterface.OnKeyListener() {
+        @Override
+        public boolean onKey(DialogInterface dialog, int keyCode, KeyEvent event) {
+            if (keyCode == KeyEvent.KEYCODE_BACK) {
+                OkGo.getInstance().cancelAll();
+                dismissDialog();
+                return true;
+            }
+            return false;
+        }
+    });
+
     public void dismissDialog() {
         try {
             if (dialog != null && dialog.isShowing()) {
+                keyClickListener.clearOnDetach(dialog);
                 dialog.dismiss();
                 dialog = null;
             }
@@ -76,6 +99,6 @@ public class LoaddingDialog {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
+
 }

@@ -1,5 +1,6 @@
 package com.lins.modulesystem.base;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,6 +11,9 @@ import androidx.annotation.LayoutRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+
+import com.lins.modulesystem.utils.screen.StatusBarUtil;
+
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
@@ -23,6 +27,8 @@ public abstract class BaseFragment extends Fragment {
     public abstract void initData();
 
     public abstract void initView();
+
+    public abstract void initListener();
 
     public abstract void initLoad();
 
@@ -38,6 +44,13 @@ public abstract class BaseFragment extends Fragment {
         initData();
     }
 
+    /**
+     * 设置状态栏的高度
+     */
+    protected void setStatusHeight(Activity act, View v){
+        StatusBarUtil.statusBarColorWithToolbar(act,v);
+    }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -50,6 +63,7 @@ public abstract class BaseFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         initView();
+        initListener();
     }
 
     @Override

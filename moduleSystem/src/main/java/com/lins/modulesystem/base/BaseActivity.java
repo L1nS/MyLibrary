@@ -1,17 +1,21 @@
 package com.lins.modulesystem.base;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-
-import com.lins.modulesystem.utils.screenUtil.StatusBarUtil;
+import android.view.View;
 
 import java.lang.ref.WeakReference;
 
 import androidx.annotation.LayoutRes;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.hjq.toast.ToastUtils;
+import com.lins.modulesystem.utils.screen.StatusBarUtil;
+
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
@@ -36,22 +40,28 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseFunc
         super.onCreate(savedInstanceState);
         ((BaseApp) this.getApplication()).getActivityManager()
                 .pushActivity(this); // 将activity推入管理栈
-//        StatusBarUtil.statusBarTransparent(this);
-//        StatusBarUtil.statusBarHide(this);
-//        StatusBarUtil.statusBarTextColor(this, false);
         setContentView(initLayoutResID());
+//        StatusBarUtil.setStatusBarColor(this, R.color.colorWhite, false);
         unbinder = ButterKnife.bind(this);
         mContext = this;
         handler = new BaseHandler(this);
-
         initData();
         initView();
         initListener();
         initLoad();
     }
 
-    protected void finishThis() {
-        BaseApp.getInstance().getActivityManager().finishThis();
+    protected void setFullWindow(){
+        StatusBarUtil.statusBarTransparent(this);
+        StatusBarUtil.statusBarHide(this);
+        StatusBarUtil.statusBarTextColor(this, true);
+    }
+
+    /**
+     * 设置状态栏的高度
+     */
+    protected void setStatusHeight(Activity act, View v){
+        StatusBarUtil.statusBarColorWithToolbar(act,v);
     }
 
     @Override

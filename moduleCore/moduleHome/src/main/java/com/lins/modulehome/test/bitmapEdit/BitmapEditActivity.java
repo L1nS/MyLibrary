@@ -17,12 +17,12 @@ import androidx.appcompat.widget.AppCompatSeekBar;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import com.hjq.toast.ToastUtils;
 import com.lins.modulehome.R;
 import com.lins.modulehome.R2;
 import com.lins.modulehome.test.utils.BitmapDecodeUtil;
 import com.lins.modulehome.test.utils.BitmapPathUtil;
 import com.lins.modulesystem.mvp.BaseMvpActivity;
-import com.lins.modulesystem.utils.ToastUtil;
 
 import butterknife.BindView;
 
@@ -171,10 +171,10 @@ public class BitmapEditActivity extends BaseMvpActivity<BitmapEditView, BitmapPr
 
     private void displayImage(String imagePath) {
         if (imagePath != null) {
-            originalBmp = BitmapDecodeUtil.decodeBitmapFromFile(imagePath, idImg.getWidth(), idImg.getHeight());
+            originalBmp = BitmapDecodeUtil.decodeBitmapFromFile(imagePath, 200, 200);
             idImg.setImageBitmap(originalBmp);
         } else {
-            ToastUtil.showToast(mContext, "获取照片失败");
+            ToastUtils.show( "获取照片失败");
         }
     }
 
@@ -191,7 +191,7 @@ public class BitmapEditActivity extends BaseMvpActivity<BitmapEditView, BitmapPr
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED)
                     openAlbum();
                 else
-                    ToastUtil.showToast(mContext, "权限拒绝");
+                    ToastUtils.show("权限拒绝");
                 break;
             default:
                 break;

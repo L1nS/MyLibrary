@@ -17,10 +17,10 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.app.NotificationCompat;
 import androidx.core.content.ContextCompat;
 
+import com.hjq.toast.ToastUtils;
 import com.lins.modulehome.R;
 import com.lins.modulehome.R2;
 import com.lins.modulesystem.base.BaseActivity;
-import com.lins.modulesystem.utils.ToastUtil;
 
 import butterknife.BindView;
 
@@ -108,8 +108,8 @@ public class ServiceActivity extends BaseActivity {
         switch (requestCode) {
             case 1:
                 if (grantResults.length <= 0 || grantResults[0] != PackageManager.PERMISSION_GRANTED) {
-                    ToastUtil.showToast(this, "拒绝权限将无法使用下载");
-                    finishThis();
+                    ToastUtils.show("拒绝权限将无法使用下载");
+                    finish();
                 }
                 break;
             default:

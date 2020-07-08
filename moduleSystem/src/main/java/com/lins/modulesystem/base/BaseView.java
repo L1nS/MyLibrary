@@ -5,8 +5,6 @@ package com.lins.modulesystem.base;
  */
 
 public interface BaseView {
-    void onRequestSuccess(String msg);
-
-    void onRequestError(String msg);
+    void onRequestError();
 
 }

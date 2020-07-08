@@ -74,7 +74,7 @@ public class MaterialDesignActivity extends BaseActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                finishThis();
+                finish();
                 break;
             default:
                 break;

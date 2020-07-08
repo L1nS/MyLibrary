@@ -3,12 +3,12 @@ plugins {
 }
 
 android {
-    compileSdkVersion rootProject.ext.android.compileSdkVersion
+    compileSdkVersion rootProject.compileSdkVersion
 
     defaultConfig {
         applicationId "com.lins.mylibrary"
-        minSdkVersion rootProject.ext.android.minSdkVersion
-        targetSdkVersion rootProject.ext.android.targetSdkVersion
+            minSdkVersion rootProject.minSdkVersion
+            targetSdkVersion rootProject.targetSdkVersion
         versionCode 1
         versionName "1.0"
         multiDexEnabled true
@@ -28,8 +28,8 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility rootProject.ext.android.JavaVersion
-        targetCompatibility rootProject.ext.android.JavaVersion
+        sourceCompatibility rootProject.javaVersion
+        targetCompatibility rootProject.javaVersion
     }
 }
 

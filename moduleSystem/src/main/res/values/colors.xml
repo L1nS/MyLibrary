@@ -2,10 +2,30 @@
 <resources>
     <color name="colorPrimary">#008577</color>
     <color name="colorTransparent">#00000000</color>
-    <color name="colorTheme">#3191E8</color>
+    <color name="colorTheme">#6FBF6D</color>
+    <color name="colorStatusBar">#50ABF6</color>
 
-    <!--默认字色，灰-->
+
     <color name="colorGray">#656565</color>
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorBlack">#000000</color>
+    <color name="colorAppBg">#FAFAFA</color>
+    <color name="colorTranslucentBlack">#99000000</color>
+    <color name="colorDialogBg">#4D000000</color>
+
+
+    <!--默认字色，灰-->
+    <color name="colorTextHint">#CCCCCC</color>
+    <color name="colorTextGray66">#666666</color>
+    <color name="colorTextBlack">#333333</color>
+    <color name="colorNavTextOff">#919191</color>
+    <color name="colorTextGray99">#999999</color>
+    <color name="colorTextRed">#FF0000</color>
+    <color name="colorTextOrange">#EE9D18</color>
+    <color name="colorTextBlue">#184671</color>
+    <color name="colorTextBlueLight">#98D8F8</color>
+
+    <color name="colorLineGrayE5">#E5E5E5</color>
+    <color name="colorLineGrayF2">#F2F2F2</color>
+    <color name="colorLineGray99">#999999</color>
 </resources>

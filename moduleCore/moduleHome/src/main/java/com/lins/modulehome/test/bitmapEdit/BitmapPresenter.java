@@ -9,7 +9,6 @@ import android.graphics.ColorMatrixColorFilter;
 import android.graphics.Paint;
 
 import com.lins.modulesystem.mvp.BaseMvpPresenter;
-import com.lins.modulesystem.utils.ToastUtil;
 
 import java.math.BigDecimal;
 

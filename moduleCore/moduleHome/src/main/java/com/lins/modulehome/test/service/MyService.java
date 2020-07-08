@@ -1,6 +1,5 @@
 package com.lins.modulehome.test.service;
 
-import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -15,9 +14,9 @@ import android.util.Log;
 
 import androidx.core.app.NotificationCompat;
 
+import com.hjq.toast.ToastUtils;
 import com.lins.modulehome.R;
 import com.lins.modulehome.test.ContactActivity;
-import com.lins.modulesystem.utils.ToastUtil;
 
 import java.io.File;
 
@@ -50,7 +49,7 @@ public class MyService extends Service {
                 downloadTask.execute(downloadUrl);
                 initNotification();
                 startForeground(1, builder.build());
-                ToastUtil.showToast(getApplicationContext(), "Downloading...");
+                ToastUtils.show( "Downloading...");
 
             }
             Log.d(TAG, "startDownload: ");
@@ -65,7 +64,7 @@ public class MyService extends Service {
         public void cancelDownload() {
             if (downloadTask != null) {
                 Log.d(TAG,"Canceled");
-                ToastUtil.showToast(getApplicationContext(), "canceled");
+                ToastUtils.show("canceled");
                 downloadTask.cancelDownload();
             } else {
                 if (downloadUrl != null) {
@@ -80,7 +79,7 @@ public class MyService extends Service {
                     }
                     manager.cancel(1);
                     stopForeground(true);
-                    ToastUtil.showToast(getApplicationContext(), "delete");
+                    ToastUtils.show( "delete");
                 }
             }
         }
@@ -99,7 +98,7 @@ public class MyService extends Service {
             //下载成功时将前台服务通知关闭，并创建一个下载成功的通知。
             stopForeground(true);
             setNotificationContent("Download Success", -1);
-            ToastUtil.showToast(getApplicationContext(), "Download Success");
+            ToastUtils.show( "Download Success");
         }
 
         @Override
@@ -107,21 +106,21 @@ public class MyService extends Service {
             downloadTask = null;
             stopForeground(true);
             setNotificationContent("Download Failed", -1);
-            ToastUtil.showToast(getApplicationContext(), "Download Failed");
+            ToastUtils.show( "Download Failed");
         }
 
         @Override
         public void onPaused() {
             downloadTask = null;
             setNotificationContent("Download paused", -1);
-            ToastUtil.showToast(getApplicationContext(), "Download Paused");
+            ToastUtils.show("Download Paused");
         }
 
         @Override
         public void onCanceled() {
             downloadTask = null;
             stopForeground(true);
-            ToastUtil.showToast(getApplicationContext(), "Downlaod Canceled");
+            ToastUtils.show( "Downlaod Canceled");
         }
     };
 

@@ -6,7 +6,6 @@ import android.widget.TextView;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.lins.modulesystem.base.BaseConstant;
 import com.lins.modulesystem.base.BaseFragment;
-import com.lins.modulesystem.utils.ToastUtil;
 
 import androidx.annotation.Nullable;
 import butterknife.BindView;
@@ -45,6 +44,11 @@ public class UserFragment extends BaseFragment {
 
     @Override
     public void initView() {
+
+    }
+
+    @Override
+    public void initListener() {
 
     }
 

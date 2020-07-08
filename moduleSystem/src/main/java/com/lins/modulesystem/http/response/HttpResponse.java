@@ -8,12 +8,12 @@ public class HttpResponse<T> {
 
     public int code;
     public String msg;
-    public T result;
+    public T data;
 
     @Override
     public String toString() {
         return "HttpResponse{" +
-                "data=" + result +
+                "data=" + data +
                 '}';
     }
 }

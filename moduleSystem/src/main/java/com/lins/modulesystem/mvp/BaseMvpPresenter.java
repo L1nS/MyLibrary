@@ -1,7 +1,7 @@
 package com.lins.modulesystem.mvp;
 
 
-import com.lins.modulesystem.utils.dialog.LoaddingDialog;
+import com.lins.modulesystem.utils.dialog.LoadingDialog;
 
 import java.lang.ref.Reference;
 import java.lang.ref.WeakReference;
@@ -11,7 +11,7 @@ import io.reactivex.disposables.Disposable;
 
 public abstract class BaseMvpPresenter<V> {
     protected Reference<V> mViewRef;
-    protected LoaddingDialog loaddingDialog = LoaddingDialog.getInstance();
+    protected LoadingDialog loadingDialog = LoadingDialog.getInstance();
     private CompositeDisposable compositeDisposable = new CompositeDisposable();
 
     public void attachView(V view) {
@@ -50,4 +50,5 @@ public abstract class BaseMvpPresenter<V> {
             compositeDisposable.clear();
         }
     }
+
 }

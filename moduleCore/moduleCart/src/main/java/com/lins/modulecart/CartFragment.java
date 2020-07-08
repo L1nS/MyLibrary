@@ -14,6 +14,7 @@ import androidx.annotation.Nullable;
 
 @Route(path = BaseConstant.FRAGMENT_URL_MODULE_CART_CART)
 public class CartFragment extends BaseFragment {
+
     @Override
     public int initLayoutResID() {
         return R.layout.activity_cart;
@@ -26,6 +27,10 @@ public class CartFragment extends BaseFragment {
 
     @Override
     public void initView() {
+
+    }
+    @Override
+    public void initListener() {
 
     }
 

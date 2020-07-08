@@ -3,8 +3,6 @@ package com.lins.modulehome.test.service;
 import android.os.AsyncTask;
 import android.os.Environment;
 
-import com.lins.modulesystem.http.OkGoUtil;
-import com.lins.modulesystem.utils.ToastUtil;
 import com.lzy.okgo.OkGo;
 
 import java.io.File;

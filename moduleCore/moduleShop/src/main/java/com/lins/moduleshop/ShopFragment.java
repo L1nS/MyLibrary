@@ -26,6 +26,11 @@ public class ShopFragment extends BaseFragment {
     }
 
     @Override
+    public void initListener() {
+
+    }
+
+    @Override
     public void initLoad() {
 
     }

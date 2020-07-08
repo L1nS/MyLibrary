@@ -14,10 +14,10 @@ import android.widget.TextView;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.hjq.toast.ToastUtils;
 import com.lins.modulesystem.base.BaseConstant;
 import com.lins.modulesystem.mvp.BaseMvpActivity;
 import com.lins.modulesystem.mvp.BaseMvpPresenter;
-import com.lins.modulesystem.utils.ToastUtil;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -91,7 +91,7 @@ public class ProductDetailActivity extends BaseMvpActivity {
         if(!TextUtils.isEmpty(save)){
             idEt.setText(save);
             idEt.setSelection(save.length());
-            ToastUtil.showToast(this,"文本复原成功");
+            ToastUtils.show("文本复原成功");
         }
     }
 
@@ -99,7 +99,7 @@ public class ProductDetailActivity extends BaseMvpActivity {
 
         @Override
         public void onReceive(Context context, Intent intent) {
-            ToastUtil.showToast(context, "本地通知");
+            ToastUtils.show("本地通知");
         }
     }
 

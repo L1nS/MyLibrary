@@ -12,11 +12,11 @@ import android.os.Build;
 import android.view.View;
 import android.widget.Button;
 
+import com.hjq.toast.ToastUtils;
 import com.lins.modulehome.R;
 import com.lins.modulehome.R2;
 import com.lins.modulesystem.mvp.BaseMvpActivity;
 import com.lins.modulesystem.mvp.BaseMvpPresenter;
-import com.lins.modulesystem.utils.ToastUtil;
 
 import butterknife.BindView;
 
@@ -51,7 +51,7 @@ public class NotificationActivity extends BaseMvpActivity {
         idBtnSendNotice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ToastUtil.showToast(mContext,"消息通知");
+                ToastUtils.show("消息通知");
                 NotificationManager manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
                 //高版本需要渠道
                 if(Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O){

@@ -11,11 +11,11 @@ import android.provider.ContactsContract;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.hjq.toast.ToastUtils;
 import com.lins.modulehome.R;
 import com.lins.modulehome.R2;
 import com.lins.modulesystem.mvp.BaseMvpActivity;
 import com.lins.modulesystem.mvp.BaseMvpPresenter;
-import com.lins.modulesystem.utils.ToastUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -94,7 +94,7 @@ public class ContactActivity extends BaseMvpActivity {
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     readContacts();
                 } else {
-                    ToastUtil.showToast(ContactActivity.this, "权限拒绝");
+                    ToastUtils.show( "权限拒绝");
                 }
                 break;
             default:

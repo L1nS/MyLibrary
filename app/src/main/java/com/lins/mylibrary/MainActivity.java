@@ -10,9 +10,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.hjq.toast.ToastUtils;
 import com.lins.modulesystem.base.BaseActivity;
 import com.lins.modulesystem.base.BaseConstant;
-import com.lins.modulesystem.utils.ToastUtil;
 
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
@@ -193,7 +193,7 @@ public class MainActivity extends BaseActivity {
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
             if ((System.currentTimeMillis() - mExitTime) > 2000) {
-                ToastUtil.showToast(context, "再按一次退出程序");
+                ToastUtils.show("再按一次退出程序");
                 mExitTime = System.currentTimeMillis();
             } else {
                 MyApplication.getInstance().getActivityManager().finishAllActivity();

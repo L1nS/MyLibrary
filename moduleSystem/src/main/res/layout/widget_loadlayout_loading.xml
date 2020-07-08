@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:clickable="true"
-    android:background="@color/colorWhite"
     android:orientation="vertical">
 
     <com.lins.modulesystem.widget.loadlayout.ProgressWheel
@@ -21,6 +20,7 @@
         android:padding="5dp"
         android:layout_height="wrap_content"
         android:text="  正在加载..."
-        android:textColor="#999999"
+        android:layout_marginTop="@dimen/qb_px_30"
+        android:textColor="@color/colorTextGray99"
         android:textSize="13sp" />
 </LinearLayout>

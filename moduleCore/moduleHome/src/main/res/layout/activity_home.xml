@@ -9,86 +9,89 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp">
+
             <Button
                 android:id="@+id/id_btn_product_list"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
                 android:layout_marginTop="8dp"
                 android:text="@string/str_product_list" />
 
             <Button
                 android:id="@+id/id_btn_contact"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
                 android:layout_marginTop="8dp"
                 android:text="联系人" />
+
             <Button
                 android:id="@+id/id_btn_notification"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
                 android:layout_marginTop="8dp"
                 android:text="通知" />
+
             <Button
                 android:id="@+id/id_btn_photo"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
                 android:layout_marginTop="8dp"
                 android:text="照片" />
 
             <Button
                 android:id="@+id/id_btn_music"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
                 android:layout_marginTop="8dp"
                 android:text="音乐播放" />
 
             <Button
                 android:id="@+id/id_btn_video"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
                 android:layout_marginTop="8dp"
                 android:text="视频播放" />
 
             <Button
                 android:id="@+id/id_btn_http"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
                 android:layout_marginTop="8dp"
                 android:text="Http请求" />
 
             <Button
                 android:id="@+id/id_btn_service"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
                 android:layout_marginTop="8dp"
                 android:text="服务" />
 
             <Button
                 android:id="@+id/id_btn_md"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
                 android:layout_marginTop="8dp"
                 android:text="Material Design" />
+
             <Button
                 android:id="@+id/id_btn_bmp_edit"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
                 android:layout_marginTop="8dp"
                 android:text="图片编辑" />
+            <Button
+                android:id="@+id/id_btn_ibeacon"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="IBeacon" />
 
         </LinearLayout>
     </ScrollView>
